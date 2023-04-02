@@ -1,0 +1,13 @@
+rss_configs:
+  - feed_url: https://rss.itmedia.co.jp/rss/2.0/itmedia_all.xml
+    webhook_url: <enter webhook url for post>
+
+connpass_api_url: https://connpass.com/api/v1/event/
+connpass_configs:
+  - keyword: ruby
+    webhook_url: <enter webhook url for post>
+  - keyword: keyboard
+    webhook_url: <enter webhook url for post>
+  - keyword: kubernetes
+    webhook_url: <enter webhook url for post>
+    
