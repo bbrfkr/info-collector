@@ -18,11 +18,16 @@ def post_connpass_events():
 
         params = {
             "keyword": keyword,
-            "ym": [this_month, after_one_month, after_two_month],
+            "ym": [
+                this_month.strftime(month_format),
+                after_one_month.strftime(month_format),
+                after_two_month.strftime(month_format),
+            ],
             "order": 3,
         }
 
         response = get(connpass_api_url, params=params)
+        print(response.url)
         events = response.json()["events"]
         for event in events:
             title = event["title"]
@@ -30,6 +35,3 @@ def post_connpass_events():
             if not redis_client.get(event_url):
                 post(webhook_url, json={"content": f"{title}: {event_url}"})
                 redis_client.set(event_url, title, ex=timedelta(days=90))
-
-
-post_connpass_events()

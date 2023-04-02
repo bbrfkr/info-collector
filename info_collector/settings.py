@@ -10,7 +10,6 @@ rss_configs = config["rss_configs"]
 
 connpass_api_url = config["connpass_api_url"]
 connpass_configs = config["connpass_configs"]
-
 redis_client = redis.Redis(
     os.getenv("REDIS_HOST", "localhost"),
     os.getenv("REDIS_PORT", 6379),
