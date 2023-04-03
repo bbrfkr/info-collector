@@ -27,7 +27,6 @@ def post_connpass_events():
         }
 
         response = get(connpass_api_url, params=params)
-        print(response.url)
         events = response.json()["events"]
         for event in events:
             title = event["title"]
