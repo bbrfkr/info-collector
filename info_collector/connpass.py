@@ -15,6 +15,7 @@ def post_connpass_events():
     for config in connpass_configs:
         keyword = config["keyword"]
         webhook_url = config["webhook_url"]
+        headers = {"User-Agent": "python-requests"}
 
         params = {
             "keyword": keyword,
@@ -26,7 +27,7 @@ def post_connpass_events():
             "order": 3,
         }
 
-        response = get(connpass_api_url, params=params)
+        response = get(connpass_api_url, headers=headers, params=params)
         events = response.json()["events"]
         for event in events:
             title = event["title"]
